@@ -15,4 +15,7 @@ class Config:
             'qa': 80
         }[env]
 
-
+        self.path = {
+            'dev': 'tests/test_data/data1.json',
+            'qa': 'tests/test_data/data2.json'
+        }[env]

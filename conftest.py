@@ -1,9 +1,15 @@
+import json
+
+from config import Config
 from pytest import fixture
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from config import Config
+
+# google_chrome = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# firefox = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+# data_path = '../test_data/data2.json'
 
 
 def pytest_addoption(parser):
@@ -20,7 +26,7 @@ def env(request):
     return request.config.getoption('--env')
 
 
-@fixture(scope='function')
+@fixture(scope='session')
 def chrome_browser():
     s = Service(ChromeDriverManager().install())
     browser = webdriver.Chrome(service=s)
@@ -47,3 +53,11 @@ def cross_browser(request):
 @fixture(scope='session')
 def app_config(env):
     return Config(env)
+
+
+@fixture(scope='session')
+def load_test_data(app_config):
+    data_path = app_config.path
+    with open(data_path) as data_file:
+        data = json.load(data_file)
+        return data
