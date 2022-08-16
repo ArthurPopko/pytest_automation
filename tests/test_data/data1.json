@@ -1,5 +1,5 @@
-[
-  "data1",
-  "data2",
-  "data3"
-]
+{
+    "input1": "data1",
+    "input2": "data2",
+    "input3": "data3"
+}

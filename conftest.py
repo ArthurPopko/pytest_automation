@@ -42,8 +42,8 @@ def firefox_browser():
     browser.quit()
 
 
-@fixture(params=[webdriver.Chrome(service=Service(ChromeDriverManager().install())),
-                 webdriver.Firefox(service=Service(GeckoDriverManager().install()))])
+# @fixture(params=[webdriver.Chrome(service=Service(ChromeDriverManager().install())),
+#                  webdriver.Firefox(service=Service(GeckoDriverManager().install()))])
 def cross_browser(request):
     driver = request.param
     yield driver
