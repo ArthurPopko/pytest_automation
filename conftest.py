@@ -44,10 +44,10 @@ def firefox_browser():
 
 # @fixture(params=[webdriver.Chrome(service=Service(ChromeDriverManager().install())),
 #                  webdriver.Firefox(service=Service(GeckoDriverManager().install()))])
-def cross_browser(request):
-    driver = request.param
-    yield driver
-    driver.quit()
+# def cross_browser(request):
+#     driver = request.param
+#     yield driver
+#     driver.quit()
 
 
 @fixture(scope='session')
