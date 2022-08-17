@@ -12,6 +12,7 @@ def test_env_is_dev(chrome_browser, app_config, env, load_test_data):
     input_text = load_test_data.get('input1')
     expected_text = 'data1'
     google_search_page = GoogleSearchPage(driver=chrome_browser)
+    chrome_browser.maximize_window()
     chrome_browser.get(base_url)
     # input search request
     google_search_page.search_input.input_text(input_text)
@@ -22,4 +23,3 @@ def test_env_is_dev(chrome_browser, app_config, env, load_test_data):
     assert base_url == 'http://google.com'
     assert port == 8080
     assert google_search_page.search_input.attribute('value') == expected_text
-
