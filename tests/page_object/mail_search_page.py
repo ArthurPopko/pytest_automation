@@ -13,6 +13,11 @@ class MailSearchPage(BasePage):
         return BaseElement(self.driver,  locator=locator)
 
     @property
+    def search_input_result(self):
+        locator = Locator(By.NAME, 'q')
+        return BaseElement(self.driver,  locator=locator)
+
+    @property
     def search_button(self):
         locator = Locator(By.ID, 'search:submit')
         return BaseElement(self.driver,  locator=locator)
