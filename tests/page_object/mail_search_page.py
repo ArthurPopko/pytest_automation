@@ -21,4 +21,3 @@ class MailSearchPage(BasePage):
     def search_button(self):
         locator = Locator(By.ID, 'search:submit')
         return BaseElement(self.driver,  locator=locator)
-
