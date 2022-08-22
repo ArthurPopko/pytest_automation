@@ -1,11 +1,13 @@
 import json
 
-from config import Config
 from pytest import fixture
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
+
+from config import Config
+
 
 # google_chrome = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # firefox = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
@@ -27,7 +29,7 @@ def env(request):
 
 
 @fixture(scope='session')
-def chrome_browser():
+def chrome_browser(request):
     s = Service(ChromeDriverManager().install())
     browser = webdriver.Chrome(service=s)
     yield browser
