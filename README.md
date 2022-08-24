@@ -1,5 +1,4 @@
-# pytest_automation
-**Web automation on pytest.**
+# Web and api automation with pytest.
 
 ### Setting up the env:
 
@@ -27,7 +26,7 @@
    add a string in: .bashrc, bash_profile, .zshrc or .profile
    e.g.: export PATH=$PATH:~/drivers
    ```
-**NOTE: It's strongly recommended to use [WebdriverManager](https://pypi.org/project/webdriver-manager/)**
+**NOTE: It's highly recommended to use [WebdriverManager](https://pypi.org/project/webdriver-manager/)**
    ```
    # selenium 4
    from selenium import webdriver
@@ -56,6 +55,6 @@ allure generate reports --clean && allure open
 
 **Install requirements.txt:**
 ```
-pip freeze > requirements.txt
-pip install -r requirements.txt 
+pip freeze > requirements.txt - to generate requirements.txt
+pip install -r requirements.txt - to install all dependences
 ``` 
