@@ -10,6 +10,11 @@ class Config:
             'qa': 'http://mail.ru'
         }[env]
 
+        self.api_url = {
+                    'dev': 'https://reqres.in',
+                    'qa': 'https://reqres.in'
+                }[env]
+
         self.app_port = {
             'dev': 8080,
             'qa': 80
