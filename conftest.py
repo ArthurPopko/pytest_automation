@@ -34,7 +34,7 @@ def chrome_browser(request):
     opt.headless=True
     # opt.add_argument("--headless")
     s = Service(ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=s, chrome_options=opt)
+    browser = webdriver.Chrome(service=s, options=opt)
     yield browser
     browser.quit()
 
