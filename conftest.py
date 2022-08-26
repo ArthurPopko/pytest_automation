@@ -3,11 +3,11 @@ import json
 from pytest import fixture
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from config import Config
-
 
 # google_chrome = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # firefox = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
@@ -30,8 +30,11 @@ def env(request):
 
 @fixture(scope='session')
 def chrome_browser(request):
+    opt = Options()
+    opt.headless=True
+    # opt.add_argument("--headless")
     s = Service(ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=s)
+    browser = webdriver.Chrome(service=s, chrome_options=opt)
     yield browser
     browser.quit()
 
