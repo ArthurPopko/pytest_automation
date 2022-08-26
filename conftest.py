@@ -30,11 +30,11 @@ def env(request):
 
 @fixture(scope='session')
 def chrome_browser(request):
-    opt = Options()
-    opt.headless=True
+    # opt = Options()
+    # opt.headless=True
     # opt.add_argument("--headless")
     s = Service(ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=s, options=opt)
+    browser = webdriver.Chrome(service=s)
     yield browser
     browser.quit()
 
