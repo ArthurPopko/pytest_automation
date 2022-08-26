@@ -58,3 +58,15 @@ allure generate reports --clean && allure open
 pip freeze > requirements.txt - to generate requirements.txt
 pip install -r requirements.txt - to install all dependences
 ``` 
+
+
+** Jenkins **
+```
+Install the latest LTS version: brew install jenkins-lts
+Install a specific LTS version: brew install jenkins-lts@YOUR_VERSION
+Start the Jenkins service: brew services start jenkins-lts
+Restart the Jenkins service: brew services restart jenkins-lts
+Update the Jenkins version: brew upgrade jenkins-lts
+```
+
+After starting the Jenkins service, browse to http://localhost:8080 and follow the instructions to complete the installation. 
