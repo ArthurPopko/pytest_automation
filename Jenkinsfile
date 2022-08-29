@@ -18,7 +18,7 @@ pipeline {
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m qa --env qa --testrail --tr-config=testrail-custom-ui --alluredir allure-results'''
+                    pytest -v -m qa --env qa --testrail --tr-config=testrail-custom-ui.cfg --alluredir allure-results'''
                 }
         }
         stage('api dev run') {
@@ -46,7 +46,7 @@ pipeline {
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m 'dev and ui' --env dev --testrail --tr-config=testrail-custom-ui --alluredir allure-results'''
+                    pytest -v -m 'dev and ui' --env dev --testrail --tr-config=testrail-custom-ui.cfg --alluredir allure-results'''
                 }
         }
         stage('allure') {
