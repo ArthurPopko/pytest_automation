@@ -13,11 +13,12 @@ pipeline {
         }
         stage('ui qa run') {
                 steps {
+                    sh 'create_testplan.sh'
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m qa --env qa --testrail --tr-config=testrail-ui.cfg --alluredir allure-results'''
+                    pytest -v -m qa --env qa --alluredir allure-results'''
                 }
         }
         stage('api dev run') {
@@ -40,6 +41,7 @@ pipeline {
         }
         stage('ui dev run') {
                 steps {
+                    sh 'create_testplan.sh'
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
