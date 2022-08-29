@@ -9,7 +9,6 @@ pipeline {
                 extensions: [],
                 userRemoteConfigs: [[credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551',
                 url: 'git@github.com:ArthurPopko/pytest_automation.git']]])
-                sh '''sh create_testplan.sh'''
             }
         }
         stage('ui qa run') {
@@ -28,7 +27,7 @@ pipeline {
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m api --env dev --testrail --tr-config=testrail-api.cfg --alluredir allure-results'''
+                    pytest -v -m api --env dev --alluredir allure-results'''
                 }
         }
         stage('data parallel run') {
@@ -43,11 +42,10 @@ pipeline {
         stage('ui dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''sh create_testplan.sh
-                    python3 -m venv ~/venvs/python310
+                    sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m 'dev and ui' --env dev --testrail --tr-config=testrail-custom-ui.cfg --alluredir allure-results'''
+                    pytest -v -m 'dev and ui' --env dev --alluredir allure-results'''
                 }
         }
         stage('allure') {
