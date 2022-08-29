@@ -28,7 +28,7 @@ def test_google_search_env_dev(chrome_browser, app_config, load_test_data, env):
     assert google_search_page.search_input.attribute('value') == expected_text
 
 
-# @mark.xfail(reason='not qa env')
+@mark.skipif(env='dev', reason='not qa env')
 @mark.ui
 @mark.qa
 @pytestrail.case('C6')
