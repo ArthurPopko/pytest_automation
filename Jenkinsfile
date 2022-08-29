@@ -15,13 +15,13 @@ pipeline {
 
 
         stage('ui qa run') {
-            parallel {
                 stage('ui qa run 1') {
                     steps {
-                        python3 -m venv ~/venvs/python310
+                        git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
+                        sh '''python3 -m venv ~/venvs/python310
                         source ~/venvs/python310/bin/activate
                         pip install -r requirements.txt
-                        pytest -v -m qa --env qa --alluredir allure-results --parallel'
+                        pytest -v -m qa --env qa --alluredir allure-results --parallel\''''
                     }
                }
 
@@ -30,7 +30,6 @@ pipeline {
                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                     }
                }
-            }
         }
     }
 }
