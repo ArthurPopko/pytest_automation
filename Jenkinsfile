@@ -14,7 +14,10 @@ pipeline {
         stage('ui qa run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''python3 -m venv ~/venvs/python310
+                    sh '''
+                    current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+                    sed "$!N;s/Automated UI tests/\'Automated QA UI tests - $current_time\'/;P;D" testrail-ui.cfg >testrail-custom-ui.cfg
+                    python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
                     pytest -v -m qa --env qa --testrail --tr-config=testrail-ui.cfg --alluredir allure-results'''
@@ -41,7 +44,10 @@ pipeline {
         stage('ui dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''python3 -m venv ~/venvs/python310
+                    sh '''
+                    current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+                    sed "$!N;s/Automated UI tests/\'Automated DEV UI tests - $current_time\'/;P;D" testrail-ui.cfg >testrail-custom-ui.cfg
+                    python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
                     pytest -v -m 'dev and ui' --env dev --testrail --tr-config=testrail-ui.cfg --alluredir allure-results'''
