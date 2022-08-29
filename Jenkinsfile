@@ -19,7 +19,7 @@ pipeline {
                     pip install -r requirements.txt
                     pytest -v -m qa --env qa --alluredir allure-results --parallel\''''
                 }
-       stage('allure') {
+        stage('allure') {
             steps {
                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
