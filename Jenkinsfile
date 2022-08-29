@@ -23,7 +23,7 @@ pipeline {
         stage('api dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''sh testrail-custom-api.cfg
+                    sh '''sh testrail-api.cfg
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
