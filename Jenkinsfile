@@ -13,7 +13,7 @@ pipeline {
         }
         stage('ui qa run') {
                 steps {
-                    sh 'create_testplan.sh'
+                    sh 'sh create_testplan.sh'
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
@@ -41,7 +41,7 @@ pipeline {
         }
         stage('ui dev run') {
                 steps {
-                    sh 'create_testplan.sh'
+                    sh 'sh create_testplan.sh'
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
