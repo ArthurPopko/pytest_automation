@@ -17,7 +17,7 @@ pipeline {
                     sh '''python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m qa --env qa --alluredir allure-results --parallel\''''
+                    pytest -v -m qa --env qa --alluredir allure-results'''
                 }
         }
         stage('allure') {
