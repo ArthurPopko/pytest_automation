@@ -1,8 +1,10 @@
 import requests
 from pytest import mark
+from pytest_testrail.plugin import pytestrail
 
 
 @mark.api
+@pytestrail.case('C5')
 def test_get_user_dev(app_config, env):
     url = f'{app_config.api_url}/api/users/2'
     headers = {
@@ -24,6 +26,7 @@ def test_get_user_dev(app_config, env):
 
 
 @mark.api
+@pytestrail.case('C2')
 def test_post_user_dev(app_config, env):
     url = f'{app_config.api_url}/api/users'
     headers = {
@@ -48,6 +51,7 @@ def test_post_user_dev(app_config, env):
 
 
 @mark.api
+@pytestrail.case('C3')
 def test_login_dev(app_config, env):
     url = f'{app_config.api_url}/api/login'
 
@@ -69,6 +73,7 @@ def test_login_dev(app_config, env):
 
 
 @mark.api
+@pytestrail.case('C4')
 def test_login_sad_path(app_config, env):
     url = f'{app_config.api_url}/api/login'
 
