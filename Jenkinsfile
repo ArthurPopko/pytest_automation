@@ -16,11 +16,17 @@ pipeline {
 
         stage('ui qa run') {
             parallel {
-                stage('RUN TESTS IN PARALLEL A') {
+                stage('ui qa run 1') {
                     steps {
                         source ~/venvs/python310/bin/activate
                         pip install -r requirements.txt
                         pytest -v -m qa --env qa --alluredir allure-results --parallel'
+                    }
+               }
+
+               stage('allure') {
+                    steps {
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                     }
                }
             }
