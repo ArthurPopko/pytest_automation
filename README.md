@@ -90,3 +90,7 @@ Solution:
 Dashboard > Manage Jenkins > Configure Global Security > Git Host Key Verification Configuration.
 Then in Host Key Verification Strategy select Accept first connection.
 ```
+
+**TestRail integration**
+
+Follow [this manual](https://pypi.org/project/pytest-testrail/)
