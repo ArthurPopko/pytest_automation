@@ -23,10 +23,11 @@ pipeline {
         stage('api dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''python3 -m venv ~/venvs/python310
+                    sh '''sh testrail-custom-api.cfg
+                    python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
-                    pytest -v -m api --env dev --testrail --tr-config=testrail-api.cfg --alluredir allure-results'''
+                    pytest -v -m api --env dev --testrail --tr-config=testrail-custom-api.cfg --alluredir allure-results'''
                 }
         }
         stage('data parallel run') {
