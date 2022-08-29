@@ -9,6 +9,7 @@ from tests.page_object.mail_search_page import MailSearchPage
 @mark.ui
 @mark.dev
 @pytestrail.case('C1')
+@mark.skipif(env='qa', reason='not qa env')
 def test_google_search_env_dev(chrome_browser, app_config, load_test_data, env):
     base_url = app_config.base_url
     port = app_config.app_port
@@ -28,10 +29,10 @@ def test_google_search_env_dev(chrome_browser, app_config, load_test_data, env):
     assert google_search_page.search_input.attribute('value') == expected_text
 
 
-@mark.skipif(env='dev', reason='not qa env')
 @mark.ui
 @mark.qa
 @pytestrail.case('C6')
+@mark.skipif(env='dev', reason='not qa env')
 def test_mail_search_env_qa(chrome_browser, load_test_data, app_config, env):
     base_url = app_config.base_url
     port = app_config.app_port
