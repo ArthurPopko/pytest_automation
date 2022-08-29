@@ -70,3 +70,23 @@ Update the Jenkins version: brew upgrade jenkins-lts
 ```
 
 After starting the Jenkins service, browse to http://localhost:8080 and follow the instructions to complete the installation. 
+
+**Jenkins GIT SSH connection**
+
+Generate SSH-key
+```
+ssh-keygen -t rsa
+```
+Paste the pub-key in GigHub and the private one in Jenkins.
+
+IF run into auth. ERROR:
+
+`No ECDSA host key is known for github.houston.softwaregrp.net 
+and you have requested strict checking:...`
+
+Solution:
+
+```
+Dashboard > Manage Jenkins > Configure Global Security > Git Host Key Verification Configuration.
+Then in Host Key Verification Strategy select Accept first connection.
+```
