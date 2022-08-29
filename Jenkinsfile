@@ -23,7 +23,8 @@ pipeline {
         stage('api dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''create_testplan.sh
+                    sh '''sh create_testplan.sh
+                    cat create_testplan.sh
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
