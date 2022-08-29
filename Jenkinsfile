@@ -14,9 +14,7 @@ pipeline {
         stage('ui qa run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''
-                    current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-                    sed "$!N;s/Automated UI tests/\'Automated QA UI tests - $current_time\'/;P;D" testrail-ui.cfg >testrail-custom-ui.cfg
+                    sh '''sh create_testplan.sh
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
@@ -44,9 +42,7 @@ pipeline {
         stage('ui dev run') {
                 steps {
                     git credentialsId: 'cdd4f772-d4c3-473c-9b2a-1056b608a551', url: 'git@github.com:ArthurPopko/pytest_automation.git'
-                    sh '''
-                    current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-                    sed "$!N;s/Automated UI tests/\'Automated DEV UI tests - $current_time\'/;P;D" testrail-ui.cfg >testrail-custom-ui.cfg
+                    sh '''sh create_testplan.sh
                     python3 -m venv ~/venvs/python310
                     source ~/venvs/python310/bin/activate
                     pip install -r requirements.txt
